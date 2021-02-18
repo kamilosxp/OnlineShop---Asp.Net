@@ -9,25 +9,24 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Wsei_web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <p class="align-middle navbar-nav">Kontakt: </p>
+                <p class="align-middle navbar-nav"> +48 000 000 000</p>
+            </div>
+            <div class="mx-auto order-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <a class="nav-link navbar-nav ml-auto align-middle" href="#">TWOJE KONTO</a>
+                @*<p class="navbar-nav ml-auto align-middle"></p>*@
             </div>
         </nav>
+        <div class="container" width="100%">
+            <img src="images/emptylogo.png" class="img-fluid"/>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,7 +36,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Wsei_web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - Wsei_web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
