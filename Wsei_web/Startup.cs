@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Wsei_web.Database;
 
 namespace Wsei_web
 {
@@ -23,7 +25,9 @@ namespace Wsei_web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddDbContext<ShopDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString("Shop")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
