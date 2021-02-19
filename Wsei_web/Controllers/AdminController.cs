@@ -10,11 +10,12 @@ using Wsei_web.Models;
 
 namespace Wsei_web.Controllers
 {
-    public class ProductsController : Controller
+    public class AdminController : Controller
     {
         private readonly ShopDbContext _dbContext;
         private readonly ILogger<ProductsController> _logger;
-        public ProductsController(ShopDbContext dbContext, ILogger<ProductsController> logger)
+
+        public AdminController(ShopDbContext dbContext, ILogger<ProductsController> logger)
         {
             _dbContext = dbContext;
             _logger = logger;
@@ -23,6 +24,27 @@ namespace Wsei_web.Controllers
         {
             var products = _dbContext.Products.Include(m => m.Category).ToList();
             return View("Products", products);
+        }
+
+        public IActionResult AddProduct()
+        {
+            return View("AddProduct");
+        }
+
+
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid data.");
+                return BadRequest("Invalid data.");
+            }
+
+            _dbContext.Products.Add(product);
+            _dbContext.SaveChanges();
+
+            return Ok();
         }
     }
 }
