@@ -24,5 +24,18 @@ namespace Wsei_web.Controllers
             var products = _dbContext.Products.Include(m => m.Category).ToList();
             return View("Products", products);
         }
+        public IActionResult Category(string category)
+        {
+            var products = _dbContext.Products
+                .Include(m => m.Category)
+                .Where(a => a.Category.Name.Equals(category)).ToList();
+            return View("Products", products);
+        }
+
+        public IActionResult Search(string name)
+        {
+            ///TODO
+            return View("Products");
+        }
     }
 }
