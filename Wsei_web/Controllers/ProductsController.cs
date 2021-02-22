@@ -32,10 +32,15 @@ namespace Wsei_web.Controllers
             return View("Products", products);
         }
 
-        public IActionResult Search(string name)
+        public IActionResult Search(string searchString)
         {
-            ///TODO
-            return View("Products");
+            var products = from p in _dbContext.Products
+                select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+                products = products.Where(p => p.Title.Contains(searchString));
+
+            return View("Products", products.ToList());
         }
     }
 }
