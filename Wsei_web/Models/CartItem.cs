@@ -9,8 +9,6 @@ namespace Wsei_web.Models
     {
         public string Id { get; set; }
 
-        public string CartId { get; set; }
-
         public int Quantity { get; set; }
 
         public System.DateTime DateCreated { get; set; }

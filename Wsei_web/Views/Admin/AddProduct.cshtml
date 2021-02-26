@@ -7,7 +7,10 @@
 }
 @model Product
 
-<form asp-action="Create" asp-controller="Admin">
+<div id="success-alert" class="alert alert-success" style="display: none">Item added
+    successfully</div>
+
+<form method="POST">
     <div class="form-group">
         <label asp-for="Title">Item name</label>
         <input asp-for="Title" class="form-control" />
@@ -37,3 +40,7 @@
     </div>
 
 </form>
+
+@section Scripts {
+    <script src="~/js/addNewItem.js"></script>
+}

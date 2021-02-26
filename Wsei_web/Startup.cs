@@ -28,6 +28,8 @@ namespace Wsei_web
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddDbContext<ShopDbContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("Shop")));
+            services.AddSession();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +51,8 @@ namespace Wsei_web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
