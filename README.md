@@ -4,10 +4,10 @@
 
 ## Wymagania
 
-Visual Studio 2019
-.NET Core SDK
-SQL Server
+* Visual Studio 2019
+* .NET Core SDK
+* SQL Server
 ## Jak uruchomić
-Otwórz solucję w Visual Studio.
-Zbuduj aplikację.
-Uruchom aplikację.
+* Otwórz solucję w Visual Studio.
+* Zbuduj aplikację.
+* Uruchom aplikację.
