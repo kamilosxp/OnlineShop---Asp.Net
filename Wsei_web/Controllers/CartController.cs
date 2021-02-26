@@ -9,7 +9,6 @@ using Wsei_web.Models;
 
 namespace Wsei_web.Controllers
 {
-    [Route("cart")]
     public class CartController : Controller
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -31,9 +30,11 @@ namespace Wsei_web.Controllers
             return View();
         }
 
-        [Route("buy/{id}")]
-        public IActionResult Buy(string id)
+        [HttpPost]
+        public IActionResult Buy([FromBody] Product prod)
         {
+            string id = prod.Id.ToString();
+
             if (_httpContextAccessor.HttpContext == null)
                 return BadRequest();
 
@@ -65,7 +66,6 @@ namespace Wsei_web.Controllers
             return Ok();
         }
 
-        [Route("remove/{id}")]
         public IActionResult Remove(string id)
         {
             if (_httpContextAccessor.HttpContext == null) return BadRequest();

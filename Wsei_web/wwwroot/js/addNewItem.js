@@ -16,7 +16,7 @@
             {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
-                body: JSON.stringify(productModel)
+                body: JSON.stringify(productModel),
             });
 
         if (response.ok) {
