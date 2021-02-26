@@ -21,7 +21,7 @@ namespace Wsei_web.Controllers
 
         [HttpPost]
         [Route("AddNewProduct")]
-        public ActionResult Post(Product product)
+        public ActionResult AddNewProduct(Product product)
         {
             if (!ModelState.IsValid)
             {

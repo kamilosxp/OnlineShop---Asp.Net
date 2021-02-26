@@ -7,7 +7,7 @@ namespace Wsei_web.Models
 {
     public class CartItem
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public int Quantity { get; set; }
 

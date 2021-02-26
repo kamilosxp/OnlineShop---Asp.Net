@@ -49,12 +49,13 @@ namespace Wsei_web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public IActionResult Create([FromBody] Product product)
         {
+
             if (!ModelState.IsValid)
             {
                 _logger.LogError("Invalid data.");
-                return BadRequest("Invalid data.");
+                return BadRequest();
             }
 
             _dbContext.Products.Add(product);

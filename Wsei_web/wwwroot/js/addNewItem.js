@@ -1,8 +1,7 @@
 ﻿(function () {
     const alertElement = document.getElementById("success-alert");
-    const formElement = document.forms[0];
+    const formElement = document.forms[1];
     const addNewItem = async () => {
-
         const titleValue = document.getElementById("Title").value;
         const descriptionValue = document.getElementById("Description").value;
         const unitPriceValue = document.getElementById("UnitPrice").value;
@@ -13,7 +12,7 @@
             UnitPrice: unitPriceValue
         };
 
-        const response = await fetch("/api/Settings/AddNewProduct",
+        const response = await fetch("/Admin/Create",
             {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
@@ -23,8 +22,8 @@
         if (response.ok) {
             alertElement.style.display = "block";
             setTimeout(() => {
-                    alertElement.style.display = "none";
-                },
+                alertElement.style.display = "none";
+            },
                 2000);
 
         }
