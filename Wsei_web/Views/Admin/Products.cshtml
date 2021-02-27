@@ -52,7 +52,7 @@
                     @Html.DisplayFor(modelItem => item.Image)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id">Remove</a>
                 </td>
             </tr>
         }

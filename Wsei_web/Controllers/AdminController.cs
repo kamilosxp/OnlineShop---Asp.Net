@@ -64,7 +64,6 @@ namespace Wsei_web.Controllers
             return Ok();
         }
 
-        [HttpDelete]
         public ActionResult Delete(int? id)
         {
             var products = _dbContext.Products.ToList();
@@ -75,7 +74,7 @@ namespace Wsei_web.Controllers
             _dbContext.Products.Remove(product);
             _dbContext.SaveChanges();
 
-            return View("Products", products);
+            return RedirectToAction("Products", products);
         }
     }
 }

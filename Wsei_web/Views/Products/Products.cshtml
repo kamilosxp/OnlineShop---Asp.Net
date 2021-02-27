@@ -10,10 +10,9 @@
         <div class="card-body">
             <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
             <h6 class="card-title">@Html.DisplayFor(modelItem => item.UnitPrice) zł</h6>
-            <h6 style="display: none" id="ProductId">@Html.DisplayFor(modelItem => item.Id)</h6>
             <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-            <a class="btn btn-secondary" onclick="addProduct(@Html.DisplayFor(modelItem => item.Id))">Dodaj do koszyka</a>
-            <a href="#" class="btn btn-primary float-right">Więcej</a>
+            <a class="btn btn-primary" onclick="addProduct(@Html.DisplayFor(modelItem => item.Id))">Dodaj do koszyka</a>
+            <a href="#" class="btn btn-secondary float-right disabled" >Więcej</a>
         </div>
     </div>
 }

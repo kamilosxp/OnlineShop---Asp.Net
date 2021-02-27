@@ -78,7 +78,8 @@ namespace Wsei_web.Controllers
                 cart.Remove(cartItem);
             }
             _httpContextAccessor.HttpContext.Session.SetObjectAsJson("cart", cart);
-            return Ok();
+
+            return RedirectToAction("Index");
         }
 
         private CartItem CreateCartItem(int id)
