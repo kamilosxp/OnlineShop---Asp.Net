@@ -69,7 +69,10 @@ namespace Wsei_web.Controllers
             var products = _dbContext.Products.ToList();
             var product = products.FirstOrDefault(a => a.Id == id);
             if (product == null)
+            {
+                _logger.LogError("Not a valid product id.");
                 return BadRequest("Not a valid product id.");
+            }
 
             _dbContext.Products.Remove(product);
             _dbContext.SaveChanges();
