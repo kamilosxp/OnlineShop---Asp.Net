@@ -13,7 +13,7 @@ namespace Wsei_web.Controllers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ShopDbContext _dbContext;
-        private const string _sessionName = "cart";
+        private const string SessionName = "cart";
         public CartController(IHttpContextAccessor httpContextAccessor, ShopDbContext dbContext)
         {
             _httpContextAccessor = httpContextAccessor;
@@ -23,7 +23,7 @@ namespace Wsei_web.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            var cart = _httpContextAccessor.HttpContext?.Session.GetObjectFromJson<List<CartItem>>(_sessionName) ?? new List<CartItem>();
+            var cart = _httpContextAccessor.HttpContext?.Session.GetObjectFromJson<List<CartItem>>(SessionName) ?? new List<CartItem>();
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.UnitPrice * item.Quantity);
 
@@ -39,7 +39,7 @@ namespace Wsei_web.Controllers
                 return BadRequest();
 
             var product = new Product();
-            if (_httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(_sessionName) == null)
+            if (_httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(SessionName) == null)
             {
                 var cart = new List<CartItem> { CreateCartItem(int.Parse(id)) };
 
@@ -47,7 +47,7 @@ namespace Wsei_web.Controllers
             }
             else
             {
-                var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(_sessionName);
+                var cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(SessionName);
 
                 if (Exists(int.Parse(id)))
                 {
@@ -69,7 +69,7 @@ namespace Wsei_web.Controllers
         public IActionResult Remove(string id)
         {
             if (_httpContextAccessor.HttpContext == null) return BadRequest();
-            List<CartItem> cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(_sessionName);
+            List<CartItem> cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(SessionName);
 
             var intId = int.Parse(id);
             if (Exists(intId))
@@ -99,7 +99,7 @@ namespace Wsei_web.Controllers
         {
             if (_httpContextAccessor.HttpContext != null)
             {
-                List<CartItem> cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(_sessionName);
+                List<CartItem> cart = _httpContextAccessor.HttpContext.Session.GetObjectFromJson<List<CartItem>>(SessionName);
                 return cart.Exists(p => p.Id == id);
             }
 

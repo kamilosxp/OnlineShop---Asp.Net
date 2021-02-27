@@ -1,4 +1,4 @@
-﻿function addProduct(prodId) {
+﻿async function addProduct(prodId) {
     const basket = document.getElementById("koszyk");
 
     const product = {
@@ -8,7 +8,7 @@
     console.log(prodId);
     console.log(JSON.stringify(product));
 
-    const response = fetch("/Cart/Buy",
+    const response = await fetch("/Cart/Buy",
         {
             method: "POST",
             headers: { "Content-type": "application/json" },
@@ -16,9 +16,9 @@
         });
 
     if (response.ok) {
-        basket.style.color = 'red';
+        basket.style.fontSize = '1.5rem';
         setTimeout(() => {
-                basket.style.display = "black";
+            basket.style.fontSize = "1rem";
         },
             2000);
 
