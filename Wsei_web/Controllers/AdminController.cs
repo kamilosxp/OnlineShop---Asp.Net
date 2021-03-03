@@ -38,7 +38,9 @@ namespace Wsei_web.Controllers
         }
         public IActionResult Orders()
         {
-            var orders = _dbContext.Orders.ToList();
+            var orders = _dbContext.Orders
+                .Include(x => x.OrderAddress)
+                .ToList();
             return View(orders);
         }
 

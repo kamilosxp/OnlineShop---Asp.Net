@@ -20,7 +20,6 @@ namespace Wsei_web.Controllers
             _dbContext = dbContext;
         }
 
-        [Route("index")]
         public IActionResult Index()
         {
             var cart = _httpContextAccessor.HttpContext?.Session.GetObjectFromJson<List<CartItem>>(SessionName) ?? new List<CartItem>();
@@ -110,5 +109,6 @@ namespace Wsei_web.Controllers
         {
             return _dbContext.Products.FirstOrDefault(p => p.Id == id);
         }
+
     }
 }

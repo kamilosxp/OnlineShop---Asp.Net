@@ -9,6 +9,5 @@ namespace Wsei_web.Models
     {
         public int Id { get; set; }
         public DateTime TransactionDate { get; set; }
-        public Order Order { get; set; }
     }
 }
